@@ -10,7 +10,7 @@ services:
     env_file: .env
     environment:
       - NODE_ENV=development
-      - REDIS_HOST=redis
+      - REDIS_URL=redis
     ports:
       - '3000:3000'
       - '9229:9229'
