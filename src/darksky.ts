@@ -8,7 +8,15 @@ export interface Weather {
   temperature: string;
 }
 
-export class DarkSky {
+export class DarkSkyRandomError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'DarkSkyRandomError';
+    this.message = message;
+  }
+}
+
+class DarkSky {
   private httpClient: AxiosInstance;
 
   constructor(secretKey: string) {
@@ -23,9 +31,9 @@ export class DarkSky {
     });
   }
 
-  async getCurrent(latitude: string, longitude: string): Promise<Weather> {
+  async getCurrentWeather(latitude: number, longitude: number): Promise<Weather> {
     if (Math.random() < ERROR_PERCENTAGE) {
-      throw new Error('How unfortunate! The API Request Failed');
+      throw new DarkSkyRandomError('How unfortunate! The API Request Failed');
     }
     const { data } = await this.httpClient.get(`${latitude},${longitude}`);
     console.log(data);
@@ -35,3 +43,5 @@ export class DarkSky {
     };
   }
 }
+
+export const darkSky = new DarkSky(process.env.DARK_SKY_KEY || '');
