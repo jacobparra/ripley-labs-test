@@ -1,0 +1,55 @@
+{
+  "name": "ripley-labs-test",
+  "version": "1.0.0",
+  "description": "Job application to work in Ripley Labs, CL",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build",
+    "clean": "rm -rf build/*",
+    "watch": "nodemon -x TS_NODE_FILES=true node --inspect=0.0.0.0:9229 -r ts-node/register src/index.ts",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobparra/ripley-labs-test.git"
+  },
+  "keywords": [
+    "node.js",
+    "react",
+    "websockets",
+    "redis",
+    "darksky.net"
+  ],
+  "author": "Jacob Parra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacobparra/ripley-labs-test/issues"
+  },
+  "homepage": "https://github.com/jacobparra/ripley-labs-test#readme",
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "ts-node --files"
+    },
+    "quiet": true,
+    "ignore": [
+      "build",
+      ".git"
+    ],
+    "ext": "js,json,ts"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "ws": "6.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "4.16.1",
+    "@types/node": "^11.13.8",
+    "nodemon": "1.18.11",
+    "ts-node": "8.1.0",
+    "tslint": "5.16.0",
+    "tslint-config-airbnb": "5.11.1",
+    "typescript": "3.4.5"
+  }
+}

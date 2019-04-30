@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+
+  app:
+    build:
+      context: .
+      target: build
+    command: 'yarn watch'
+    env_file: .env
+    environment:
+      - NODE_ENV=development
+      - REDIS_HOST=redis
+    ports:
+      - '3000:3000'
+      - '9229:9229'
+    volumes:
+      - '.:/code'
+      - /code/node_modules
+
+  redis:
+      image: redis:alpine
