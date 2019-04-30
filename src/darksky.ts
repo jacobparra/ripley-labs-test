@@ -4,8 +4,9 @@ const DARK_SKY_BASE_URL = 'https://api.darksky.net/forecast';
 const ERROR_PERCENTAGE = 0.1;
 
 export interface Weather {
-  time: Date;
   temperature: string;
+  time: number;
+  timezone: string;
 }
 
 export class DarkSkyRandomError extends Error {
@@ -36,10 +37,10 @@ class DarkSky {
       throw new DarkSkyRandomError('How unfortunate! The API Request Failed');
     }
     const { data } = await this.httpClient.get(`${latitude},${longitude}`);
-    console.log(data);
     return {
       temperature: data.currently.temperature,
-      time: data.currently.time
+      time: data.currently.time,
+      timezone: data.timezone
     };
   }
 }
