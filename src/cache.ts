@@ -7,7 +7,7 @@ class Cache {
   private redisClient = new Redis(process.env.REDIS_URL);
 
   async getCityWeather(cityName: string): Promise<any> {
-    await this.redisClient.hgetall(cityName);
+    return this.redisClient.hgetall(cityName);
   }
 
   async setCityWeather(cityName: string, weather: Weather): Promise<void> {
