@@ -34,6 +34,8 @@ class CityManager {
       return weather;
     } catch (e) {
       if (e.name === 'DarkSkyRandomError') {
+        console.error(`Unable to get weather for ${city.name}. Retrying.`);
+        await cache.addError(city.name);
         return this.updateWeather(city);
       }
       throw e;
