@@ -40,7 +40,7 @@
     "ext": "js,json,ts"
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.18.1",
     "bufferutil": "4.0.1",
     "ioredis": "4.9.0",
     "utf-8-validate": "5.0.2",
